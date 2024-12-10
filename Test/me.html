@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+        ul {
+            margin-top: 20px;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple List Application</h1>
+    <input type="text" id="itemInput" placeholder="Enter an item" />
+    <button id="addButton">Add to List</button>
+    <div id="error"></div>
+    <ul id="itemList"></ul>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        const itemInput = document.getElementById('itemInput');
+        const itemList = document.getElementById('itemList');
+        const errorDiv = document.getElementById('error');
+
+        addButton.addEventListener('click', function() {
+            const inputValue = itemInput.value.trim(); 
+            errorDiv.textContent = '';
+
+            if (inputValue === '') {
+                
+                errorDiv.textContent = 'Please enter a value.';
+            } else {
+                
+                const listItem = document.createElement('li');
+                listItem.textContent = inputValue;
+                itemList.appendChild(listItem);
+
+                
+                itemInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
